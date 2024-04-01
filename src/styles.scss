@@ -1,0 +1,150 @@
+$body-color: red;
+
+%icon{
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+@mixin text($url: none){
+  height: 30%;
+  min-width: 40%;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+%father{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+%son{
+  color: white;
+  font-size: 3rem;
+  max-height: 50%;
+  width: 100%;
+}
+body {
+  background-image: url('./pics/sunny.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $body-color;
+  height: 100vh; /* Take up the full viewport height */
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Take up the full viewport width */
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  height: 40em;
+  width: 70em; 
+  background-color: rgba(148, 163, 184, 0.3);
+  display: flex;
+  flex-direction: column;
+  .search{
+    flex: 1;
+    display: flex;
+    .city{
+      flex: 1.5;
+      display: flex;
+      align-items: center;
+      #city{
+        flex: auto;
+        border: none;
+        outline: none;
+        text-align: center;
+        max-width: 40%;
+        max-height: 40%;
+        border-radius: 8px;
+        background-color: rgba(245, 240, 240, 0.993);
+        color: black;
+        font-size: 1.2rem;
+      }
+    }
+    .se{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      .ser{
+        flex: auto;
+        background-image: url(./icons/search.svg);
+        background-repeat: no-repeat;
+        background-size: 80%;
+        height: 40%;
+        max-width: 10%;
+        &:hover{
+          border: solid 2px rgba(148, 163, 184, 0.3);;
+        }
+      }
+    }
+  }
+  .contents{
+    flex: 6;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    .location{
+      display: flex;
+      flex-direction: column;
+      .weath{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        .w-text{
+          color: white;
+          font-weight: bold;
+          width: 50%;
+          max-height: 50%;
+          text-align: center;
+          display: grid;
+          place-content: start;
+          font-size: 2rem;
+        }
+      }
+      .loc{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        .l-text{
+          color: white;
+          font-weight: bold;
+          font-size: 3rem;
+          height: 50%;
+        }
+      }
+    }
+    .temp{
+      display: flex;
+      .t-icon{
+        @extend %icon;
+        .ic{
+          @include text($url: "./icons/temp.svg")
+        }
+      }
+      .t-temp{
+        @extend %father;
+        .te{
+          @extend %son;
+        }
+      }
+    }
+    .wind{
+      display: flex;
+      .w-icon{
+        @extend %icon;
+        .wc{
+          @include text($url: "./icons/wind.svg")
+        }
+      }
+      .w-speed{
+        @extend %father;
+        .w{
+          @extend %son;
+        }
+      }
+    }
+  }
+}
